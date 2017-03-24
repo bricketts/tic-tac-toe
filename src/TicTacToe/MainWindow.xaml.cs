@@ -11,7 +11,20 @@ namespace TicTacToe
     {
         #region Private Members
 
+        /// <summary>
+        /// Holds the current results of the cells in the active game
+        /// </summary>
+        private MarkType[] mResults;
 
+        /// <summary>
+        /// Ture if it is player 1's turn (X), False if player 2's turn (O)
+        /// </summary>
+        private bool mPlayer1Turn;
+
+        /// <summary>
+        /// True if Game over
+        /// </summary>
+        private bool mGameOver;
 
         #endregion
 
