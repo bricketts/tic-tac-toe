@@ -121,15 +121,48 @@ namespace TicTacToe
         private void CheckForWinner()
         {
             //Check for Horizontal Win
-            var same = (mResults[0] & mResults[1] & mResults[2]) == mResults[0];
-
-            if (mResults[0] != MarkType.Free && same)
+            //Check for Top Row Win
+            if (mResults[0] != MarkType.Free && (mResults[0] & mResults[1] & mResults[2]) == mResults[0])
             {
                 // Game Ends
                 mGameOver = true;
 
                 // Hightlight Winning cells in green
-                Button0_0.Background = Button1_0 = Button2_0 = Brushes.Green;
+                Button0_0.Background = Button1_0.Background = Button2_0.Background = Brushes.Green;
+            }
+
+            // Check for Middle Row Win
+            if (mResults[3] != MarkType.Free && (mResults[3] & mResults[4] & mResults[5]) == mResults[3])
+            {
+                // Game Ends
+                mGameOver = true;
+
+                // Hightlight Winning cells in green
+                Button0_1.Background = Button1_1.Background = Button2_1.Background = Brushes.Green;
+            }
+
+            // Check for Bottom Row Win
+            if (mResults[6] != MarkType.Free && (mResults[6] & mResults[7] & mResults[8]) == mResults[6])
+            {
+                // Game Ends
+                mGameOver = true;
+
+                // Hightlight Winning cells in green
+                Button0_2.Background = Button1_2.Background = Button2_2 .Background = Brushes.Green;
+            }
+
+
+            // Check for no winner and default board
+            if (!mResults.Any(cell => cell == MarkType.Free))
+            {
+                // Game Over
+                mGameOver = true;
+
+                //Turn all cells orange
+                Container.Children.Cast<Button>().ToList().ForEach(button =>
+                {
+                    button.Background = Brushes.Orange;
+                });
             }
         }
     }
