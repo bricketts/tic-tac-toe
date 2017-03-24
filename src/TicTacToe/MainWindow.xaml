@@ -8,8 +8,15 @@
         ResizeMode="NoResize"
         Title="Tic Tac Toe" Height="500" Width="500">
 
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="FontSize" Value="70"/>
+        </Style>
+    </Window.Resources>
+    
     <Border Padding="15">        
-        <Grid>
+        <Grid x:Name="Container">
             <!--Grid Definition-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
