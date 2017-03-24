@@ -120,6 +120,8 @@ namespace TicTacToe
 
         private void CheckForWinner()
         {
+            #region Horizontal Win Condition
+                        
             //Check for Horizontal Win
             //Check for Top Row Win
             if (mResults[0] != MarkType.Free && (mResults[0] & mResults[1] & mResults[2]) == mResults[0])
@@ -150,7 +152,10 @@ namespace TicTacToe
                 // Hightlight Winning cells in green
                 Button0_2.Background = Button1_2.Background = Button2_2 .Background = Brushes.Green;
             }
+            #endregion
 
+            #region Vertical Win Condition
+            
             //Check for Vertical Win
             //Check for Left Column Win
             if (mResults[0] != MarkType.Free && (mResults[0] & mResults[3] & mResults[6]) == mResults[0])
@@ -181,6 +186,32 @@ namespace TicTacToe
                 // Hightlight Winning cells in green
                 Button2_0.Background = Button2_1.Background = Button2_2.Background = Brushes.Green;
             }
+            #endregion
+
+            #region Diagonal Win Condition
+
+            //Check for Diagonal Win
+            //Check for Left to Right Diagnal Win
+            if (mResults[0] != MarkType.Free && (mResults[0] & mResults[4] & mResults[8]) == mResults[0])
+            {
+                // Game Ends
+                mGameOver = true;
+
+                // Hightlight Winning cells in green
+                Button0_0.Background = Button1_1.Background = Button2_2.Background = Brushes.Green;
+            }
+
+            //Check for Right to Left Diagnal Win
+            if (mResults[2] != MarkType.Free && (mResults[2] & mResults[4] & mResults[6]) == mResults[2])
+            {
+                // Game Ends
+                mGameOver = true;
+
+                // Hightlight Winning cells in green
+                Button2_0.Background = Button1_1.Background = Button0_2.Background = Brushes.Green;
+            }
+
+            #endregion
 
             // Check for no winner and default board
             if (!mResults.Any(cell => cell == MarkType.Free))
