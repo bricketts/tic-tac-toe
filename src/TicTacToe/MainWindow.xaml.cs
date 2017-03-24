@@ -213,6 +213,8 @@ namespace TicTacToe
 
             #endregion
 
+            #region Draw            
+
             // Check for no winner and default board
             if (!mResults.Any(cell => cell == MarkType.Free))
             {
@@ -225,6 +227,7 @@ namespace TicTacToe
                     button.Background = Brushes.Orange;
                 });
             }
+            #endregion
         }
     }
 }
